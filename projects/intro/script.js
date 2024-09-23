@@ -1,1 +1,1 @@
-console.log("Hello World comming from the script")
+console.log("Hello World, comming from the script")
