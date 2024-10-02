@@ -129,3 +129,35 @@ function calculateAverage(array) {
 	}
 }
 console.log(calculateAverage([0, 1, 2, 3, 4]));
+
+function reverseString(str) {
+	return str.split("").reverse().join("");
+}
+console.log(reverseString("marcos"));
+
+function countVowels(str) {
+	const vowels = "aeiouAEIOU";
+	let counter = 0;
+
+	for (let char of str) {
+		if (vowels.includes(char)) {
+			counter++;
+		}
+	}
+	return counter;
+}
+
+console.log(countVowels("marcos"));
+
+let array = [1, 2, 3, 4];
+
+function sumEvenNumbers(array) {
+	let soma = 0;
+	for (let i = 0; i < array.length; i++) {
+		if (array[i] % 2 === 0) {
+			soma += array[i];
+		}
+	}
+	return soma;
+}
+console.log(sumEvenNumbers(array));
