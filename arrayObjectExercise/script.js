@@ -23,3 +23,19 @@ arr3 = ["angelica", "marcos", "vinicius", "fabiano", "roberto"];
 if (arr3.includes("marcos")) {
 	console.log("sim, existe este nome no array");
 }
+
+let words = ["casa", "carro", "bicicleta", "avião"];
+let capitalizedWords = words.map(function (word) {
+	return word.charAt(0).toUpperCase() + word.slice(1);
+});
+console.log(capitalizedWords);
+
+let numbers = [1, 2, 3, 4, 5];
+let doubledAndSummed = numbers
+	.map(function (num) {
+		return num * 2;
+	})
+	.reduce(function (acc, curr) {
+		return acc + curr;
+	}, 0);
+console.log(doubledAndSummed);
