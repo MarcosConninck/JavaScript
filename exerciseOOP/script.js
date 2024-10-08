@@ -176,32 +176,36 @@ gol.abastecer(10);
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
-class ContaBancaria {
+class ContaBancaria1 {
 	constructor(saldoCC, saldoCP, jurosCP) {
 		this.saldoCC = saldoCC;
 		this.saldoCP = saldoCP;
 		this.jurosCP = jurosCP;
 	}
-	selecionarConta(conta) {
-		if (conta == 1) {
-			return "saldoCC";
-		} else if (conta == 2) {
-			return "saldoCP";
+	verificaSaldo(conta) {
+		if (conta == "saldoCC") {
+			return this.saldoCC;
+		} else if (conta == "saldoCP") {
+			return this.saldoCP;
 		}
 	}
 	deposito(valor, conta) {
-		if (conta == this.selecionarConta(1)) {
-			console.log(
-				`Depositado ${valor} na CC. Saldo atual ${(this.saldoCC +=
-					valor)}`
-			);
+		if (conta == "saldoCC") {
 			this.saldoCC += valor;
-		} else if (conta == this.selecionarConta(2)) {
 			console.log(
-				`Depositado ${valor} na CP. Saldo atual ${(this.saldoCC +=
-					valor)}`
+				`Depositado ${valor} na Corrente... Saldo atual: ${this.verificaSaldo(
+					"saldoCC"
+				)}`
 			);
+			return;
+		} else if (conta == "saldoCP") {
 			this.saldoCP += valor;
+			console.log(
+				`Depositado ${valor} na Poupança... Saldo atual: ${this.verificaSaldo(
+					"saldoCP"
+				)}`
+			);
+			return;
 		} else {
 			console.log("valor ou conta incorreta");
 		}
@@ -209,26 +213,175 @@ class ContaBancaria {
 	saque(valor, conta) {
 		if (conta == "saldoCC") {
 			this.saldoCC -= valor;
+			console.log(
+				`Sacando ${valor} da Corrente... Saldo atual ${this.verificaSaldo(
+					"saldoCC"
+				)}`
+			);
+			return;
 		} else if (conta == "saldoCP") {
 			this.saldoCP -= valor;
+			console.log(
+				`Sacando ${valor} da Poupança... Saldo atual: ${this.verificaSaldo(
+					"saldoCP"
+				)}`
+			);
+			return;
 		} else {
 			console.log("valor ou conta incorreta");
 		}
 	}
 	transferirCPCC(valor) {
-		if (valor >= this.saldoCP) {
+		if (valor > this.saldoCP) {
 			console.log("saldo insuficiente para transferir");
 		} else {
+			console.log(
+				`Transferindo ${valor} da Poupança e enviando pra corrente.`
+			);
+			this.saldoCP -= valor;
 			this.saldoCC += valor;
+			console.log(`Saldo CC: ${this.saldoCC}, Saldo CP: ${this.saldoCP}`);
 		}
 	}
-}
-
-class ContaHerdada extends ContaBancaria {
-	constructor(saldoCC, saldoCP, jurosCP) {
-		super(jurosCP, jurosCP * 2);
+	rendimentoPoupanca(meses) {
+		let total = this.saldoCP * (1 + this.jurosCP / 100) ** meses;
+		let rendimento = total - this.saldoCP;
+		this.saldoCP = rendimento;
+		console.log(
+			`sua conta rendeu ${rendimento.toFixed(
+				2
+			)}$, saldo Poupança ${total.toFixed(2)}`
+		);
 	}
 }
 
-let minhaConta = new ContaBancaria(1000, 100, 0);
-minhaConta.deposito(100, 1);
+class ContaHerdada extends ContaBancaria1 {
+	constructor(saldoCC, saldoCP, jurosCP) {
+		super(saldoCC, saldoCP, jurosCP * 2);
+	}
+}
+
+let minhaConta = new ContaBancaria1(1000, 100, 0.5);
+let outraConta = new ContaBancaria1(0, 0, 0);
+minhaConta.deposito(100, "saldoCC");
+minhaConta.deposito(100, "saldoCP");
+minhaConta.rendimentoPoupanca(6);
+minhaConta.saque(230, "saldoCC");
+minhaConta.transferirCPCC(200);
+let contaHerdada = new ContaHerdada(5000, 3000, 0.5);
+console.log(contaHerdada);
+contaHerdada.rendimentoPoupanca(6);
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Contador de palavras na frase
+class WordCounter {
+	constructor() {}
+	countWords(str) {
+		if (str.length === 0) {
+			return 0;
+		}
+		let counter = 0;
+		let newStr = str.split(" ");
+		for (let i = 0; i < newStr.length; i++) {
+			counter++;
+		}
+		return counter;
+	}
+}
+
+let contador = new WordCounter();
+let frase = "meu nome é marcos vinicius e eu gosto de correr";
+let frase1 = "olá";
+let frase2 = "";
+console.log(contador.countWords(frase));
+console.log(contador.countWords(frase1));
+console.log(contador.countWords(frase2));
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+class Retangulo {
+	constructor(largura, altura) {
+		if (largura <= 0 || altura <= 0) {
+			throw new Error("Largura e altura devem ser maiores que 0");
+		}
+		this.largura = largura;
+		this.altura = altura;
+	}
+	calcularArea() {
+		return this.largura * this.altura;
+	}
+	calcularPerimetro() {
+		return (this.largura + this.altura) * 2;
+	}
+}
+let meuRetangulo = new Retangulo(10, 5);
+console.log(meuRetangulo.calcularArea());
+console.log(meuRetangulo.calcularPerimetro());
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+class Voo {
+	constructor(codigoVoo, origem, destino, assentosDisponiveis) {
+		this.codigoVoo = codigoVoo;
+		this.origem = origem;
+		this.destino = destino;
+		this.assentosDisponiveis = assentosDisponiveis;
+	}
+	reservarAssento() {
+		if (this.assentosDisponiveis > 0) {
+			this.assentosDisponiveis--;
+			console.log("reserva realizada com sucesso");
+		} else {
+			console.log("Não há assentos disponíveis para reserva.");
+		}
+		return this.assentosDisponiveis;
+	}
+	consultarAssentosDisponiveis() {
+		return this.assentosDisponiveis;
+	}
+}
+let meuVoo = new Voo(123, "londrina", "curitiba", 3);
+console.log(meuVoo.consultarAssentosDisponiveis());
+meuVoo.reservarAssento();
+meuVoo.reservarAssento();
+meuVoo.reservarAssento();
+meuVoo.reservarAssento();
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+class Livro {
+	constructor(titulo, autor, disponivel) {
+		this.titulo = titulo;
+		this.autor = autor;
+		this.disponivel = disponivel;
+	}
+	emprestar() {
+		if (this.disponivel) {
+			console.log("emprestando livro... OK");
+			return (this.disponivel = false);
+		} else if (this.disponivel == false) {
+			console.log(`${this.titulo} Está indisponivel`);
+		} else {
+			console.log("erro inesperado");
+		}
+	}
+	devolver() {
+		if (this.disponivel == false) {
+			console.log("devolvendo livro... OK");
+			return (this.disponivel = true);
+		} else {
+			return console.log(`${this.titulo} já está na biblioteca. ué?`);
+		}
+	}
+	consultarDisponibilidade() {
+		console.log("está diponivel? " + this.disponivel);
+		return this.disponivel;
+	}
+}
+let meuLivro = new Livro("dom casmurro", "machado de assis", true);
+meuLivro.consultarDisponibilidade();
+meuLivro.emprestar();
+meuLivro.consultarDisponibilidade();
+meuLivro.devolver();
+meuLivro.consultarDisponibilidade();
+meuLivro.devolver();
