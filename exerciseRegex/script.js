@@ -32,4 +32,22 @@ console.log(buscaMarca.test("Nike")); // false
 console.log("////////////////////////////////////////////////////////");
 console.log("Regex que valide emdereços de IP");
 
-let validaIP = /\d+/;
+const validaIP =
+	/((([01][0-9][0-9]|2[0-4][0-9]|25[0-5])|([0-9][0-9])|([0-9]))[.]){3}(([01][0-9][0-9]|2[0-4][0-9]|25[0-5])|([0-9][0-9])|([0-9]))/;
+console.log(validaIP.test("127.168.0.1"));
+console.log(validaIP.test("127.0.0.1"));
+console.log(validaIP.test("198.168.255.1"));
+console.log(validaIP.test("198.168.256.1")); // false
+console.log(validaIP.test("8.8.8.8"));
+
+console.log("////////////////////////////////////////////////////////");
+console.log("Valida usuário");
+
+const validaUser = /^[a-z0-9_-]{3,16}$/i;
+console.log(validaUser.test("ze_manga123"));
+console.log(validaUser.test("ze-manga"));
+console.log(validaUser.test("_Zuck"));
+console.log(validaUser.test("_Zuc k")); // false
+console.log(validaUser.test("Ab")); // false
+console.log(validaUser.test("FraseBemGrandeComMaisDe16DigitosTesteaaaaaaaaa")); // false
+console.log(validaUser.test("+++nome")); // false
