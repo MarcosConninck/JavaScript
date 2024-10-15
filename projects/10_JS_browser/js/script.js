@@ -55,5 +55,65 @@ let titulo = document.querySelector("#titulo-principal");
 let novoTitulo = document.createElement("h1");
 novoTitulo.textContent = "NOVO TITULO";
 let paiTitulo = titulo.parentNode;
-
 paiTitulo.replaceChild(novoTitulo, titulo);
+
+console.log("////////////////////////////////////////////////////////////////");
+console.log("appendChild");
+
+let p = document.getElementById("p-sem-texto");
+let pTexto = document.createTextNode("Novo conteudo do <p> adicionado");
+p.appendChild(pTexto);
+console.log(p);
+
+console.log("////////////////////////////////////////////////////////////////");
+console.log("createElement");
+
+let span = document.createElement("span");
+let elemento = document.querySelector("div h1");
+let paiElemento = elemento.parentElement;
+let conteudoSpan = document.createTextNode("SPAN");
+span.appendChild(conteudoSpan);
+paiElemento.insertBefore(span, elemento);
+console.log(paiElemento);
+
+console.log("////////////////////////////////////////////////////////////////");
+console.log("get set atribute");
+
+let href = document.querySelector("body footer a");
+console.log(href.getAttribute("href"));
+let newHref = "https://www.youtube.com";
+href.setAttribute("href", newHref);
+
+console.log("////////////////////////////////////////////////////////////////");
+console.log("get width height");
+
+let elTeste = document.querySelector("h1");
+console.log(elTeste.clientWidth); // largura total
+console.log(elTeste.clientHeight); // altura total
+
+console.log("////////////////////////////////////////////////////////////////");
+console.log("elements position");
+
+let elTeste1 = document.querySelector("h1");
+console.log(elTeste1.getBoundingClientRect());
+
+console.log("////////////////////////////////////////////////////////////////");
+console.log("change CSS with JS");
+
+let elTeste2 = document.querySelector("h1");
+setTimeout(() => {
+	elTeste2.style.color = "red"; // sobrepõe o CSS
+	elTeste2.style.backgroundColor = "green"; // sobrepõe o CSS
+}, 2000);
+
+console.log("////////////////////////////////////////////////////////////////");
+console.log("querySelectorAll");
+
+let itens = document.querySelectorAll(".lista");
+console.log(itens);
+
+for (let i = 0; i < itens.length; i++) {
+	setTimeout(() => {
+		itens[i].style.color = "red";
+	}, i * 1000);
+}
