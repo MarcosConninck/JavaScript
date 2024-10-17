@@ -74,7 +74,7 @@ window.addEventListener("keyup", (e) => {
 });
 
 console.log("/////////////////////////////////////////////////");
-console.log("mouse events");
+console.log("mouse click events");
 
 let btn5 = document.querySelector("#btn5");
 btn5.addEventListener("dblclick", () => {
@@ -86,11 +86,54 @@ btn6.addEventListener("mousedown", () => {
 });
 
 console.log("/////////////////////////////////////////////////");
-console.log("mouse events");
+console.log("Scroll events");
 
-// window.addEventListener("mousemove", (e) => {
-// 	console.log(e.x, e.y);
-// });
+function handleScroll() {
+	if (window.scrollY > 200) {
+		console.log("chegou no 200y");
+		window.removeEventListener("scroll", handleScroll);
+	}
+}
+window.addEventListener("scroll", handleScroll);
 
 console.log("/////////////////////////////////////////////////");
-console.log("Scroll events");
+console.log("focus blur events");
+
+let getInput = document.querySelector("#nome");
+
+getInput.addEventListener("focus", () => {
+	console.log("entrou no input");
+});
+getInput.addEventListener("blur", () => {
+	console.log("saiu input");
+});
+
+console.log("/////////////////////////////////////////////////");
+console.log("loading events");
+
+// window.addEventListener("load", () => {
+// 	alert("assine os termos de uso da página");
+// });
+let nameInput = document.querySelector("#formulario");
+
+const handlerBeforeUnload = (e) => {
+	e.preventDefault();
+	e.returnValue = true; // utilizar para navegadores mais antigos
+};
+
+nameInput.addEventListener("input", (e) => {
+	if (e.target.value !== "") {
+		window.addEventListener("beforeunload", handlerBeforeUnload);
+	} else {
+		window.removeEventListener("beforeunload", handlerBeforeUnload);
+	}
+});
+
+console.log("/////////////////////////////////////////////////");
+console.log("debounce com movimento do mouse");
+
+let timeout;
+window.addEventListener("mousemove", (e) => {
+	clearTimeout(timeout);
+	timeout = setTimeout(() => console.log(e.x, e.y), 500);
+});
