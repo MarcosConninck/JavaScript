@@ -1,0 +1,130 @@
+h1 {
+	text-align: center;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 42px;
+}
+
+body {
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* botões - margem, padding... */
+#btn-container button {
+	border: none;
+	padding: 8px 15px;
+	margin: 0px 20px;
+	background-color: lightgrey;
+}
+
+/* jogo */
+#main-container {
+	display: flex;
+	width: 300px;
+	margin: 0;
+	flex-direction: row;
+	flex-wrap: wrap;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* jogo removendo bordas laterais */
+#box-1,
+#box-2,
+#box-3 {
+	border-top: 0px;
+}
+#box-3,
+#box-6,
+#box-9 {
+	border-right: 0px;
+}
+#box-7,
+#box-8,
+#box-9 {
+	border-bottom: 0px;
+}
+
+#box-1,
+#box-4,
+#box-7 {
+	border-left: 0px;
+}
+
+.box {
+	height: 100px;
+	border: 5px solid black;
+	box-sizing: border-box;
+	flex: 1 1 33%;
+}
+
+/* simbolos */
+.x {
+	font-size: 65px;
+	color: red;
+	display: inline-block;
+	line-height: 100px;
+}
+.o {
+	width: 50px;
+	height: 50px;
+	border: 5px solid green;
+	display: inline-block;
+	line-height: 100px;
+	border-radius: 50%;
+	margin-top: 17px;
+}
+
+/* .hide {
+	display: none !important;
+} */
+
+/* placar */
+.scoreboard-container {
+	font-weight: bold;
+	margin-top: 30px;
+	font-size: 25px;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+}
+.score-box {
+	margin: 0px 20px;
+}
+
+#x-scoreboard {
+	color: red;
+	margin-right: 3px;
+}
+#o-scoreboard {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	border: 3px solid green;
+	border-radius: 50%;
+}
+
+/* mensagem de vitória */
+#message p {
+	display: none;
+}
+#message p {
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.8);
+	color: white;
+	top: 150px;
+	width: 500px;
+	height: 70px;
+	text-align: center;
+	font-size: 50px;
+	padding: 20px;
+}
+
+#rodape {
+	text-align: center;
+}
