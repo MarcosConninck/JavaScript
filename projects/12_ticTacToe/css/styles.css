@@ -76,9 +76,9 @@ body {
 	margin-top: 17px;
 }
 
-/* .hide {
+.hide {
 	display: none !important;
-} */
+}
 
 /* placar */
 .scoreboard-container {
@@ -106,9 +106,7 @@ body {
 }
 
 /* mensagem de vitória */
-#message p {
-	display: none;
-}
+
 #message p {
 	position: absolute;
 	margin-left: auto;
