@@ -1,0 +1,27 @@
+{
+	"name": "14_job_finder",
+	"version": "1.0.0",
+	"description": "Esse programa é um portal para programadores encontrarem emprego. É um projeto do curso da Udemy, no qual serão utilizadas diversas tecnologias que foram estudadas no decorrer do curso",
+	"main": "app.js",
+	"scripts": {
+		"dev": "nodemon app.js"
+	},
+	"keywords": [
+		"dev",
+		"jobs",
+		"dev",
+		"opportunities"
+	],
+	"author": "marcos <marcosconninck@git.com>",
+	"license": "MIT",
+	"dependencies": {
+		"body-parser": "^1.20.3",
+		"express": "^4.21.1",
+		"express-handlebars": "^8.0.1",
+		"sequelize": "^6.37.4",
+		"sqlite3": "^5.1.7"
+	},
+	"devDependencies": {
+		"nodemon": "^3.1.7"
+	}
+}
