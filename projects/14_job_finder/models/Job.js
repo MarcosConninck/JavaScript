@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 const db = require("../db/connection"); // .. sobe uma pasta
+const sequelize = require("../db/connection");
 
 const Job = db.define("Job", {
 	title: {
@@ -14,13 +15,20 @@ const Job = db.define("Job", {
 	email: {
 		type: Sequelize.STRING,
 	},
-	new: {
+	new_job: {
 		type: Sequelize.INTEGER,
 	},
 	createdAt: {
 		type: Sequelize.STRING,
+		allowNull: false,
+		defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
 	},
 	updatedAt: {
+		type: Sequelize.STRING,
+		allowNull: false,
+		defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+	},
+	description: {
 		type: Sequelize.STRING,
 	},
 });
