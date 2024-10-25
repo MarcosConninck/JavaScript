@@ -1,3 +1,127 @@
-h1 {
-	color: red;
+* {
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* nav  */
+.navbar {
+	padding: 1rem;
+	border: 1px solid #ccc;
+}
+.nav-item {
+	margin: 0 0.5rem;
+}
+
+.navbar .nav-item a {
+	color: #212529;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+	padding: 0.3rem 0.5rem;
+	font-weight: bold;
+}
+
+.navbar .nav-item .btn {
+	color: #fff;
+	background-color: #f03e3e;
+	border: 1px solid transparent;
+	border-radius: 0;
+}
+
+.nav-link.btn.btn-primary:hover {
+	background-color: #fff;
+	color: #f03e3e;
+	border-color: #f03e3e;
+}
+
+/* banner  */
+#top-container {
+	width: 100%;
+	padding-top: 110px;
+	background-color: #f7f9fc;
+	border-bottom: 4px solid #ddeff4;
+	margin-bottom: 30px;
+	background-image: url("../img/1000_F_554032918_N9aE23YjUadC57xlJsqMpemV4iWfXjey.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+#main-title {
+	padding: 30px 0;
+	font-size: 4rem;
+	color: #ccc;
+	font-weight: bolder;
+}
+
+#main-subtitle {
+	font-size: 1.6rem;
+	padding: 20px;
+	font-style: italic;
+	font-weight: bold;
+	color: #f03e3e;
+	/* border-style: double; */
+}
+
+/* form  */
+#search-form {
+	padding: 30px 100px;
+}
+
+#search-form .col-md-10,
+#search-form .col-md-2 {
+	padding: 0;
+}
+
+#search-form input,
+#search-form button {
+	width: 100%;
+	border-radius: 0;
+	height: 50px;
+	font: 18px;
+}
+
+#search-form button {
+	color: #fff;
+	background-color: #f03e3e;
+	border: 1px solid transparent;
+}
+
+.inline-form {
+	display: flex;
+	align-items: center;
+}
+
+.form-group {
+	flex: 1; /* Faz com que o input ocupe o máximo de espaço disponível */
+	margin-right: 10px; /* Espaçamento entre input e botão */
+}
+
+.btn {
+	white-space: nowrap; /* Evita que o texto do botão quebre */
+}
+
+/* lista */
+#jobs-container {
+	padding: 0 100px;
+	padding-bottom: 50px;
+}
+
+#job-list .list-group-item {
+	margin-bottom: 8px;
+	border: 1px solid #ccc;
+	padding: 15px 80px;
+	color: #212529;
+}
+#job-list .list-group-item p {
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+#job-list .list-group-item.new-job {
+	border: none;
+	background-color: #fff7cc;
+}
+
+#job-list-title {
+	margin-bottom: 35px;
 }
