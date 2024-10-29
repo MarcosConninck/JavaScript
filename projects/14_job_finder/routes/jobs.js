@@ -6,6 +6,10 @@ const Job = require("../models/Job");
 router.get("/test", (req, res) => {
 	res.send("funcionou a requisição");
 });
+// jobs route
+router.get("/add", (req, res) => {
+	res.render("layouts/add");
+});
 
 // add job via post
 router.post("/add", (req, res) => {
